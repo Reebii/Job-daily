@@ -1,0 +1,28 @@
+name: Run Daily Python Script
+
+on:
+  schedule:
+    # Runs everyday at exactly 10:00 AM UTC
+    - cron: '0 10 * * *'
+  workflow_dispatch: # Allows you to manually run this anytime via the GitHub Actions tab
+
+jobs:
+  run-v3-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Execute Script
+        run: python v3.py
