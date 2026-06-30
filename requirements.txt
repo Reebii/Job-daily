@@ -80,7 +80,7 @@ python-dateutil==2.9.0.post0
 python-dotenv==1.2.1
 python-multipart==0.0.21
 pytz==2025.2
-pywin32==311
+pywin32==311; sys_platform == 'win32'
 referencing==0.37.0
 rembg==2.0.72
 requests==2.32.5
