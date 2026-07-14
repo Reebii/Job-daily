@@ -2,7 +2,8 @@ name: Run Daily Python Script
 
 on:
   schedule:
-    - cron: '0 10 * * *'
+    - cron: '30 4 * * *'  # Runs at 10:00 AM IST (04:30 UTC)
+    - cron: '30 13 * * *' # Runs at 7:00 PM IST (13:30 UTC)
   workflow_dispatch: 
 
 jobs:
@@ -11,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
